@@ -1,5 +1,5 @@
 # eyaay: LangChain .NET ve OpenAI API ile PDF'lerle Sohbet (RAG with .Net Core )
-Bu proje, LangChain .NET kütüphanesi ve OpenAI API kullanılarak geliştirilmiş bir .NET Core uygulamasıdır. Kullanıcıların PDF dosyalarını yükleyip bu dosyaların içeriği hakkında sorular sormasına olanak tanır. Cevaplar, dokümanın içeriğine dayanarak ve Türkçe olarak sağlanır.
+Bu proje, LangChain .NET kütüphanesi ve OpenAI API kullanılarak geliştirilmiş bir .NET Core uygulamasıdır. Kullanıcıların PDF dosyalarını yükleyip bu dosyaların içeriği hakkında sorular sormasına olanak tanır. Cevaplar, dokümanın içerikleri dikkate alınarak Türkçe olarak üretilir.
 
 
 ![image](https://github.com/onrkrsy/eyaay-app/assets/11960564/82681fe5-bdd4-4c3a-9c1a-05a74cc21a19)
