@@ -1,7 +1,12 @@
 ﻿var selectedFile = "pdfId";
+
 $(document).ready(function () { 
     ConversationItemClickedEvent();
     $('#sendBtn').click(function () {
+
+        var selectedModel = $('#modelSelect').val();
+
+
         $('#sendBtn').prop('disabled', true);
         var userInput = $('#userInput').val().trim();
         if (userInput) {
@@ -9,7 +14,7 @@ $(document).ready(function () {
             appendMessage('user', userInput);
             appendMessage('bot', 'Cevap hazırlanıyor...'); // Display "Cevap hazırlanıyor" message
           
-            getAnswer(selectedFile, userInput)
+            getAnswer(selectedFile, userInput,selectedModel)
                 .then(responseData => {
                     // Use the response data
                     console.log(responseData);
@@ -171,10 +176,11 @@ function deleteFile(fileGuid, conversationItem) {
 
 
 
-function getAnswer(guid, userInput) {
+function getAnswer(guid, userInput,vmodel) {
     console.log("sss "+guid);
     // Create the request body
-    const requestBody = JSON.stringify(userInput);
+    //const requestBody = JSON.stringify(userInput);
+    const requestBody = JSON.stringify({ question: userInput, model: vmodel });
 
     // Return a promise that resolves with the response data
     return new Promise((resolve, reject) => {

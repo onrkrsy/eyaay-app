@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using LangChain.Extensions;
+using LangChain.Splitters.Text;
 
 namespace ChatWithDocuments.Controllers
 {
@@ -32,6 +33,7 @@ namespace ChatWithDocuments.Controllers
         [HttpPost("upload")]
         public async Task<ActionResult<FileUploadResponse>> UploadFile(IFormFile file)
         {
+            string fileGuid = "";
             try
             {
                 if (file == null || file.Length == 0)
@@ -40,7 +42,7 @@ namespace ChatWithDocuments.Controllers
                 }
 
                 string uploadsFolder = Path.Combine(_environment.WebRootPath, "uploads");
-                string fileGuid = GenerateUniqueString(10);
+                fileGuid = GenerateUniqueString(10);
                 string uniqueFileName = fileGuid + "_" + file.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
@@ -55,6 +57,7 @@ namespace ChatWithDocuments.Controllers
             }
             catch (Exception ex)
             {
+                DeleteFile(fileGuid);
                 return StatusCode(500, new FileUploadResponse { Success = false, FileUrl = "fileUrl", Message = "An error occurred" });
             }
         }
@@ -144,13 +147,15 @@ namespace ChatWithDocuments.Controllers
             string pdfId = fileGuid.Replace("-", "");
 
             using var vectorDatabase = new SqLiteVectorDatabase(dataSource: $"vectors.db");
-         
+            var splitter = new CharacterTextSplitter("\n\n", 4000, 200);
+             
+           
             await vectorDatabase.AddDocumentsFromAsync<PdfPigPdfLoader>(
                 embeddingModel,
                 dimensions: 1536,
                 dataSource: DataSource.FromUrl(pdfUrl),
                 collectionName: pdfId,
-                textSplitter: null);
+                textSplitter: splitter); // Default is CharacterTextSplitter(ChunkSize = 4000, ChunkOverlap = 200)
 
             return fileName;
         }

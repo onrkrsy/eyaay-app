@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatGPT Chatbot</title>
+    <title>Eyaay - ChatWithDocuments</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -23,6 +23,17 @@
             <!-- Sidebar for conversation list -->
             <div class="col-md-4 col-lg-3 p-0  sidebar">
                 <div class="sidebar-header text-center py-2">
+                    <div class="p-3">
+                    <select id="modelSelect" class="form-control">
+                        <option value="Gpt35Turbo">Gpt35Turbo</option>
+                        <option value="Gpt4">Gpt4</option>
+                        <option value="Gpt4_32k">Gpt4_32k</option>
+                        <option value="Gpt35TurboInstruct">Gpt35TurboInstruct</option>
+                        <option value="Gpt4TurboPreview">Gpt4TurboPreview</option>
+                        <option value="Gpt4VisionPreview">Gpt4VisionPreview</option>
+                        <option value="Gpt4Turbo">Gpt4Turbo</option>
+                        </select>
+                    </div>
                     <div id="uploded-area"class="sider-upload" style="height: 64px;margin: 8px;;flex-shrink: 0;">
                         <span class="upload-bg">
                             <div class="css-18gdw5k ant-upload ant-upload-drag" style="padding: 0px;">
@@ -60,7 +71,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Uyarı</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
