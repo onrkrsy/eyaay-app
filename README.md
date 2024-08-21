@@ -33,7 +33,7 @@ Bu proje, araştırma amaçlı olarak geliştirilmiştir ve .NET ile Retrieval-A
 1. **Depoyu klonlayın:**
 
    ```sh
-   git clone [https://github.com/kullanici-adi/eyaay.git](https://github.com/onrkrsy/eyaay-app.git)
+   git clone https://github.com/onrkrsy/eyaay-app.git
    cd eyaay
    ```
 
